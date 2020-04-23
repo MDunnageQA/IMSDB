@@ -3,18 +3,21 @@ package com.qa.ims.persistence.domain;
 public class Orders {
 	
 	private long id;
+	private int ordersNumItems;
 	private double ordersCost;
-	private String date;
+	private String ordersDate;
 	
-	public Orders(long id, double ordersCost, String date) {
+	public Orders(long id, int ordersNumItems, double ordersCost, String ordersDate) {
 		this.id = id;
+		this.ordersNumItems = ordersNumItems;
 		this.ordersCost = ordersCost;
-		this.date = date;
+		this.ordersDate = ordersDate;
 	}
-	
-	public Orders(double ordersCost, String date) {
+
+	public Orders(int ordersNumItems, double ordersCost, String ordersDate) {
+		this.ordersNumItems = ordersNumItems;
 		this.ordersCost = ordersCost;
-		this.date = date;
+		this.ordersDate = ordersDate;
 	}
 
 	public long getId() {
@@ -25,6 +28,14 @@ public class Orders {
 		this.id = id;
 	}
 	
+	public int getOrdersNumItems() {
+		return ordersNumItems;
+	}
+
+	public void setOrdersNumItems(int ordersNumItems) {
+		this.ordersNumItems = ordersNumItems;
+	}
+	
 	public double getOrdersCost() {
 		return ordersCost;
 	}
@@ -33,23 +44,28 @@ public class Orders {
 		this.ordersCost = ordersCost;
 	}
 
-	public String getDate() {
-		return date;
+	public String getOrdersDate() {
+		return ordersDate;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setOrdersDate(String ordersDate) {
+		this.ordersDate = ordersDate;
+	}
+	
+	public String toString() {
+		return "id:" + id + " order cost:" + ordersCost + " order date " + ordersDate;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		long temp;
 		temp = Double.doubleToLongBits(ordersCost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((ordersDate == null) ? 0 : ordersDate.hashCode());
+		result = prime * result + ordersNumItems;
 		return result;
 	}
 
@@ -62,18 +78,20 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		if (date == null) {
-			if (other.date != null)
-				return false;
-		} else if (!date.equals(other.date))
-			return false;
 		if (id != other.id)
 			return false;
 		if (Double.doubleToLongBits(ordersCost) != Double.doubleToLongBits(other.ordersCost))
 			return false;
+		if (ordersDate == null) {
+			if (other.ordersDate != null)
+				return false;
+		} else if (!ordersDate.equals(other.ordersDate))
+			return false;
+		if (ordersNumItems != other.ordersNumItems)
+			return false;
 		return true;
 	}
-	
+
 	
 
 }

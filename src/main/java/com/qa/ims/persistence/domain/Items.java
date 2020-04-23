@@ -51,6 +51,11 @@ public class Items {
 	public void setItemsAgeRestriction(int itemsAgeRestriction) {
 		this.itemsAgeRestriction = itemsAgeRestriction;
 	}
+	
+	public String toString() {
+		return "id:" + id + " name:" + name + " item price:" + itemsPrice + " age restriction "
+				 + itemsAgeRestriction;
+	}
 
 	@Override
 	public int hashCode() {

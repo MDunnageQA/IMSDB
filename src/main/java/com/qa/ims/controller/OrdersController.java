@@ -34,11 +34,13 @@ public class OrdersController implements CrudController<Orders>{
 
 	@Override
 	public Orders create() {
+		LOGGER.info("Please enter number of items in order");
+		Integer ordersNumItems = Integer.valueOf(getInput());
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");
 		String ordersDate = getInput();
-		Orders order = ordersService.create(new Orders(ordersCost, ordersDate));
+		Orders order = ordersService.create(new Orders(ordersNumItems, ordersCost, ordersDate));
 		LOGGER.info("Order created");
 		return order;
 	}
@@ -47,11 +49,13 @@ public class OrdersController implements CrudController<Orders>{
 	public Orders update() {
 		LOGGER.info("Please enter the id of the order you would like to update");
 		Long id = Long.valueOf(getInput());
+		LOGGER.info("Please enter number of items in order");
+		Integer ordersNumItems = Integer.valueOf(getInput());
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");
 		String ordersDate = getInput();
-		Orders order = ordersService.create(new Orders(id, ordersCost, ordersDate));
+		Orders order = ordersService.create(new Orders(id, ordersNumItems, ordersCost, ordersDate));
 		LOGGER.info("Order updated");
 		return order;
 	}

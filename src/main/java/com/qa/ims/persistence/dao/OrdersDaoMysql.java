@@ -28,9 +28,10 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	
 	Orders ordersFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
+		int ordersNumItems = resultSet.getInt("ordersNumItems");
 		double ordersCost = resultSet.getDouble("ordersCost");
-		String date = resultSet.getString("date");
-		return new Orders(id, ordersCost, date);
+		String ordersDate = resultSet.getString("ordersDate");
+		return new Orders(id, ordersNumItems, ordersCost, ordersDate);
 	}
 
 	@Override
@@ -67,8 +68,8 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	public Orders create(Orders orders) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders(name, ordersCost, ordersDate) "
-					+ "values('" + orders.getOrdersCost() + "','" + orders.getDate() + "')");
+			statement.executeUpdate("insert into orders(ordersNumItems, ordersCost, ordersDate) "
+					+ "values('" + orders.getOrdersNumItems() + "','" + orders.getOrdersCost() + "','" + orders.getOrdersDate() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -94,8 +95,8 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	public Orders update(Orders orders) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update orders set ordersCost ='" + 
-				orders.getOrdersCost() + "' ,ordersDate ='" + orders.getDate() + 
+			statement.executeUpdate("update orders set ordersNumItems ='" + orders.getOrdersNumItems() +
+					"', ordersCost ='" + orders.getOrdersCost() + "', ordersDate ='" + orders.getOrdersDate() + 
 				"' where id =" + orders.getId());
 			return readOrders(orders.getId());
 		} catch (Exception e) {

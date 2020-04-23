@@ -1,7 +1,7 @@
 Coverage: 34%
 # Project Title
 
-One Paragraph of project description goes here
+This project uses both Java and Mysql to create an inventory management system that can use hard coded CRUD statemnts in java to modify the database.
 
 ## Getting Started
 
