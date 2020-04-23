@@ -1,4 +1,5 @@
 package com.qa.ims.persistence.domain;
+import java.util.ArrayList;
 
 public class Orders {
 	
@@ -6,6 +7,8 @@ public class Orders {
 	private int ordersNumItems;
 	private double ordersCost;
 	private String ordersDate;
+	private long customerID;
+	private ArrayList<Long> customerid = new ArrayList<Long>();
 	
 	public Orders(long id, int ordersNumItems, double ordersCost, String ordersDate) {
 		this.id = id;
@@ -52,6 +55,16 @@ public class Orders {
 		this.ordersDate = ordersDate;
 	}
 	
+	public long getCustomerID() {
+		return customerID;
+	}
+
+	public void setCustomerID(long customerID) {
+		this.customerID = customerID;
+	}
+	
+	
+
 	public String toString() {
 		return "id:" + id + " order cost:" + ordersCost + " order date " + ordersDate;
 	}
@@ -60,6 +73,7 @@ public class Orders {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (int) (customerID ^ (customerID >>> 32));
 		result = prime * result + (int) (id ^ (id >>> 32));
 		long temp;
 		temp = Double.doubleToLongBits(ordersCost);
@@ -78,6 +92,8 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
+		if (customerID != other.customerID)
+			return false;
 		if (id != other.id)
 			return false;
 		if (Double.doubleToLongBits(ordersCost) != Double.doubleToLongBits(other.ordersCost))
@@ -91,6 +107,7 @@ public class Orders {
 			return false;
 		return true;
 	}
+	
 
 	
 
