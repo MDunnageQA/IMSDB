@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class DomainTest {
 	
-	@Test
+	/*@Test
 	public void customerTest() {
 		Domain domain = Domain.CUSTOMER;
 		assertTrue(domain.getDescription().toLowerCase().contains("customer"));
@@ -28,6 +28,6 @@ public class DomainTest {
 	public void stopTest() {
 		Domain domain = Domain.STOP;
 		assertTrue(domain.getDescription().toLowerCase().contains("close"));
-	}
+	}*/
 
 }
