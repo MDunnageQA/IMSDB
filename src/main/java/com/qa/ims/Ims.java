@@ -27,45 +27,48 @@ import com.qa.ims.utils.Utils;
 public class Ims {
 
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
-	private boolean menuLoop = true;
 
 	public void imsSystem() {
 		LOGGER.info("What is your username");
 		String username = Utils.getInput();
 		LOGGER.info("What is your password");
 		String password = Utils.getInput();
+		
+		boolean menuLoop = true;
 
 		init(username, password);
 
-		LOGGER.info("Which entity would you like to use?");
-		Domain.printDomains();
+		while(menuLoop == true) {
+			LOGGER.info("Which entity would you like to use?");
+			Domain.printDomains();
 
-		Domain domain = Domain.getDomain();
-		LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
+			Domain domain = Domain.getDomain();
+			LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
 
-		Action.printActions();
-		Action action = Action.getAction();
-
-		switch (domain) {
-		case CUSTOMER:
-			CustomerController customerController = new CustomerController(
-					new CustomerServices(new CustomerDaoMysql(username, password)));
-			doAction(customerController, action);
-			break;
-		case ITEM:
-			ItemsController itemsController = new ItemsController(
-					new ItemsServices(new ItemsDaoMysql(username, password)));
-			doAction(itemsController, action);
-			break;
-		case ORDER:
-			OrdersController ordersController = new OrdersController(
-					new OrdersServices(new OrdersDaoMysql(username, password)));
-			doAction(ordersController, action);
-			break;
-		case STOP:
-			break;
-		default:
-			break;
+			Action.printActions();
+			Action action = Action.getAction();
+				
+			switch (domain) {
+			case CUSTOMER:
+				CustomerController customerController = new CustomerController(
+						new CustomerServices(new CustomerDaoMysql(username, password)));
+				doAction(customerController, action);
+				break;
+			case ITEM:
+				ItemsController itemsController = new ItemsController(
+						new ItemsServices(new ItemsDaoMysql(username, password)));
+				doAction(itemsController, action);
+				break;
+			case ORDER:
+				OrdersController ordersController = new OrdersController(
+						new OrdersServices(new OrdersDaoMysql(username, password)));
+				doAction(ordersController, action);
+				break;
+			case STOP: menuLoop = false;
+				break;
+			default:
+				break;
+			}
 		}
 
 	}

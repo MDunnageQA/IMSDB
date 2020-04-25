@@ -1,5 +1,6 @@
 package com.qa.ims.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -36,11 +37,19 @@ public class OrdersController implements CrudController<Orders>{
 	public Orders create() {
 		LOGGER.info("Please enter number of items in order");
 		Integer ordersNumItems = Integer.valueOf(getInput());
+		ArrayList<Long> itemsID = new ArrayList<Long>();
+		for (int i = 0; i < ordersNumItems; i++) {
+			LOGGER.info("Please enter the item ID's for remaining " + (ordersNumItems - i) + " items");
+			Long idAdder = Long.valueOf(getInput());
+			itemsID.add(idAdder);
+		}
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");
 		String ordersDate = getInput();
-		Orders order = ordersService.create(new Orders(ordersNumItems, ordersCost, ordersDate));
+		LOGGER.info("Please enter the customer Id for this order");
+		Long customerID = Long.valueOf(getInput());
+		Orders order = ordersService.create(new Orders(ordersNumItems, itemsID, ordersCost, ordersDate, customerID));
 		LOGGER.info("Order created");
 		return order;
 	}
@@ -51,11 +60,19 @@ public class OrdersController implements CrudController<Orders>{
 		Long id = Long.valueOf(getInput());
 		LOGGER.info("Please enter number of items in order");
 		Integer ordersNumItems = Integer.valueOf(getInput());
+		ArrayList<Long> itemsID = new ArrayList<Long>();
+		for (int i = 0; i < ordersNumItems; i++) {
+			LOGGER.info("Please enter the item ID's for remaining " + (ordersNumItems - i) + " items");
+			Long idAdder = Long.valueOf(getInput());
+			itemsID.add(idAdder);
+		}
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");
 		String ordersDate = getInput();
-		Orders order = ordersService.create(new Orders(id, ordersNumItems, ordersCost, ordersDate));
+		LOGGER.info("Please enter the customer Id for this order");
+		Long customerID = Long.valueOf(getInput());
+		Orders order = ordersService.create(new Orders(id, ordersNumItems, itemsID, ordersCost, ordersDate, customerID));
 		LOGGER.info("Order updated");
 		return order;
 	}

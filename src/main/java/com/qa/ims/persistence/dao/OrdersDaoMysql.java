@@ -31,7 +31,9 @@ public class OrdersDaoMysql implements Dao<Orders> {
 		int ordersNumItems = resultSet.getInt("ordersNumItems");
 		double ordersCost = resultSet.getDouble("ordersCost");
 		String ordersDate = resultSet.getString("ordersDate");
-		return new Orders(id, ordersNumItems, ordersCost, ordersDate);
+		long customerID = resultSet.getLong("customer_id");
+		ArrayList<Long> itemsID = (ArrayList<Long>) resultSet.getObject("item_id");
+		return new Orders(id, ordersNumItems, itemsID, ordersCost, ordersDate, customerID);
 	}
 
 	@Override
@@ -68,8 +70,9 @@ public class OrdersDaoMysql implements Dao<Orders> {
 	public Orders create(Orders orders) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("insert into orders(ordersNumItems, ordersCost, ordersDate) "
-					+ "values('" + orders.getOrdersNumItems() + "','" + orders.getOrdersCost() + "','" + orders.getOrdersDate() + "')");
+			statement.executeUpdate("insert into orders(ordersNumItems, ordersCost, ordersDate, customer_id, item_id) "
+					+ "values('" + orders.getOrdersNumItems() + "','" + orders.getOrdersCost() + "','" + orders.getOrdersDate()
+					+ "','" + orders.getCustomerID() + "','" + orders.getItemsID() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -97,6 +100,7 @@ public class OrdersDaoMysql implements Dao<Orders> {
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("update orders set ordersNumItems ='" + orders.getOrdersNumItems() +
 					"', ordersCost ='" + orders.getOrdersCost() + "', ordersDate ='" + orders.getOrdersDate() + 
+				"', customer_id ='" + orders.getCustomerID() + "', item_id ='" + orders.getItemsID() +
 				"' where id =" + orders.getId());
 			return readOrders(orders.getId());
 		} catch (Exception e) {

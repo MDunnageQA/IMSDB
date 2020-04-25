@@ -5,19 +5,22 @@ public class Orders {
 	
 	private long id;
 	private int ordersNumItems;
+	private ArrayList<Long> itemsID = new ArrayList<Long>();
 	private double ordersCost;
 	private String ordersDate;
 	private long customerID;
-	private ArrayList<Long> customerid = new ArrayList<Long>();
 	
-	public Orders(long id, int ordersNumItems, double ordersCost, String ordersDate) {
+	public Orders(long id, int ordersNumItems, ArrayList<Long> itemsID, double ordersCost, String ordersDate, long customerID) {
 		this.id = id;
 		this.ordersNumItems = ordersNumItems;
+		this.itemsID = itemsID;
 		this.ordersCost = ordersCost;
 		this.ordersDate = ordersDate;
+		this.itemsID = itemsID;
+		
 	}
 
-	public Orders(int ordersNumItems, double ordersCost, String ordersDate) {
+	public Orders(int ordersNumItems, ArrayList<Long> itemsID, double ordersCost, String ordersDate, long customerID) {
 		this.ordersNumItems = ordersNumItems;
 		this.ordersCost = ordersCost;
 		this.ordersDate = ordersDate;
@@ -55,6 +58,14 @@ public class Orders {
 		this.ordersDate = ordersDate;
 	}
 	
+	public ArrayList<Long> getItemsID() {
+		return itemsID;
+	}
+
+	public void setItemsID(ArrayList<Long> itemsID) {
+		this.itemsID = itemsID;
+	}
+
 	public long getCustomerID() {
 		return customerID;
 	}
@@ -62,8 +73,6 @@ public class Orders {
 	public void setCustomerID(long customerID) {
 		this.customerID = customerID;
 	}
-	
-	
 
 	public String toString() {
 		return "id:" + id + " order cost:" + ordersCost + " order date " + ordersDate;
@@ -75,6 +84,7 @@ public class Orders {
 		int result = 1;
 		result = prime * result + (int) (customerID ^ (customerID >>> 32));
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((itemsID == null) ? 0 : itemsID.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(ordersCost);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -96,6 +106,11 @@ public class Orders {
 			return false;
 		if (id != other.id)
 			return false;
+		if (itemsID == null) {
+			if (other.itemsID != null)
+				return false;
+		} else if (!itemsID.equals(other.itemsID))
+			return false;
 		if (Double.doubleToLongBits(ordersCost) != Double.doubleToLongBits(other.ordersCost))
 			return false;
 		if (ordersDate == null) {
@@ -108,7 +123,4 @@ public class Orders {
 		return true;
 	}
 	
-
-	
-
 }
