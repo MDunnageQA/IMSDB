@@ -1,5 +1,4 @@
 package com.qa.ims.persistence.domain;
-import java.util.ArrayList;
 
 public class Orders {
 	
