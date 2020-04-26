@@ -32,6 +32,7 @@ public class OrdersDaoMysql implements Dao<Orders> {
 		double ordersCost = resultSet.getDouble("ordersCost");
 		String ordersDate = resultSet.getString("ordersDate");
 		long customerID = resultSet.getLong("customer_id");
+		@SuppressWarnings("unchecked")
 		ArrayList<Long> itemsID = (ArrayList<Long>) resultSet.getObject("item_id");
 		return new Orders(id, ordersNumItems, itemsID, ordersCost, ordersDate, customerID);
 	}
