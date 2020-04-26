@@ -15,6 +15,7 @@ public class Orders {
 		this.itemsID = itemsID;
 		this.ordersCost = ordersCost;
 		this.ordersDate = ordersDate;
+		this.customerID = customerID;
 		
 	}
 
@@ -75,7 +76,9 @@ public class Orders {
 	}
 
 	public String toString() {
-		return "id:" + id + " order cost:" + ordersCost + " order date " + ordersDate;
+		return "id: " + id + ", number of items: " + ordersNumItems + ", items ID: " 
+	+ itemsID + ", order cost: " + ordersCost + ", order date: " + ordersDate
+	+ ", customer ID: " + customerID;
 	}
 
 	@Override

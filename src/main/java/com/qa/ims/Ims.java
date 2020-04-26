@@ -43,6 +43,9 @@ public class Ims {
 			Domain.printDomains();
 
 			Domain domain = Domain.getDomain();
+			if (domain.name().toUpperCase() == "STOP") {
+				System.exit(0);
+			}
 			LOGGER.info("What would you like to do with " + domain.name().toLowerCase() + ":");
 
 			Action.printActions();
@@ -64,7 +67,7 @@ public class Ims {
 						new OrdersServices(new OrdersDaoMysql(username, password)));
 				doAction(ordersController, action);
 				break;
-			case STOP: menuLoop = false;
+			case STOP: System.exit(0);
 				break;
 			default:
 				break;

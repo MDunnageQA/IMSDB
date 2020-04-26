@@ -2,18 +2,18 @@ package com.qa.ims.persistence.domain;
 
 public class Items {
 	
-	private long id;
+	private Long id;
 	private String name;
-	private double itemsPrice;
-	private int itemsAgeRestriction;
+	private Double itemsPrice;
+	private Integer itemsAgeRestriction;
 	
-	public Items(String name, double itemsPrice, int itemsAgeRestriction) {
+	public Items(String name, Double itemsPrice, Integer itemsAgeRestriction) {
 		this.name = name;
 		this.itemsPrice = itemsPrice;
 		this.itemsAgeRestriction = itemsAgeRestriction;
 	}
-	
-	public Items(long id, String name, double itemPrice, int itemsAgeRestriction) {
+		
+	public Items(Long id, String name, Double itemPrice, Integer itemsAgeRestriction) {
 		this.id = id;
 		this.name = name;
 		this.itemsPrice = itemPrice;
@@ -24,7 +24,7 @@ public class Items {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -40,7 +40,7 @@ public class Items {
 		return itemsPrice;
 	}
 	
-	public void setItemsPrice(double itemsPrice) {
+	public void setItemsPrice(Double itemsPrice) {
 		this.itemsPrice = itemsPrice;
 	}
 	
@@ -48,7 +48,7 @@ public class Items {
 		return itemsAgeRestriction;
 	}
 	
-	public void setItemsAgeRestriction(int itemsAgeRestriction) {
+	public void setItemsAgeRestriction(Integer itemsAgeRestriction) {
 		this.itemsAgeRestriction = itemsAgeRestriction;
 	}
 	
