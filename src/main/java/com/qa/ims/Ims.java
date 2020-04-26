@@ -67,7 +67,8 @@ public class Ims {
 						new OrdersServices(new OrdersDaoMysql(username, password)));
 				doAction(ordersController, action);
 				break;
-			case STOP: System.exit(0);
+			case STOP: menuLoop = false;
+					System.exit(0);
 				break;
 			default:
 				break;
