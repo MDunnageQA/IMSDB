@@ -1,6 +1,5 @@
 package com.qa.ims.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -37,12 +36,8 @@ public class OrdersController implements CrudController<Orders>{
 	public Orders create() {
 		LOGGER.info("Please enter number of items in order");
 		Integer ordersNumItems = Integer.valueOf(getInput());
-		ArrayList<Long> itemsID = new ArrayList<Long>();
-		for (int i = 0; i < ordersNumItems; i++) {
-			LOGGER.info("Please enter the item ID's for remaining " + (ordersNumItems - i) + " items");
-			Long idAdder = Long.valueOf(getInput());
-			itemsID.add(idAdder);
-		}
+		LOGGER.info("Please enter the items ID for the order");
+		Long itemsID = Long.valueOf(getInput());
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");
@@ -60,12 +55,8 @@ public class OrdersController implements CrudController<Orders>{
 		Long id = Long.valueOf(getInput());
 		LOGGER.info("Please enter number of items in order");
 		Integer ordersNumItems = Integer.valueOf(getInput());
-		ArrayList<Long> itemsID = new ArrayList<Long>();
-		for (int i = 0; i < ordersNumItems; i++) {
-			LOGGER.info("Please enter the item ID's for remaining " + (ordersNumItems - i) + " items");
-			Long idAdder = Long.valueOf(getInput());
-			itemsID.add(idAdder);
-		}
+		LOGGER.info("Please enter the items ID for the order");
+		Long itemsID = Long.valueOf(getInput());
 		LOGGER.info("Please enter cost of order");
 		Double ordersCost = Double.valueOf(getInput());
 		LOGGER.info("Please enter date of order");

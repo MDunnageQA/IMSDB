@@ -13,7 +13,7 @@ import com.qa.ims.persistence.domain.Customer;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CustomerServicesTest {
-/*	
+	
 	@Mock
 	private Dao<Customer> customerDao;
 	
@@ -25,7 +25,7 @@ public class CustomerServicesTest {
 		Customer customer = new Customer("chris", "perrins");
 		customerServices.create(customer);
 		Mockito.verify(customerDao, Mockito.times(1)).create(customer);
-	}*/
+	}
 	
 //	@Test
 //	public void customerServicesRead() {
