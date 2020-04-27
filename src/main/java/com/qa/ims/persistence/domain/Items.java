@@ -20,7 +20,7 @@ public class Items {
 		this.itemsAgeRestriction = itemsAgeRestriction;
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
@@ -36,7 +36,7 @@ public class Items {
 		this.name = name;
 	}
 	
-	public double getItemsPrice() {
+	public Double getItemsPrice() {
 		return itemsPrice;
 	}
 	
@@ -44,7 +44,7 @@ public class Items {
 		this.itemsPrice = itemsPrice;
 	}
 	
-	public int getItemsAgeRestriction() {
+	public Integer getItemsAgeRestriction() {
 		return itemsAgeRestriction;
 	}
 	

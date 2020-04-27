@@ -2,14 +2,14 @@ package com.qa.ims.persistence.domain;
 
 public class Orders {
 	
-	private long id;
-	private int ordersNumItems;
-	private long itemsID;
-	private double ordersCost;
+	private Long id;
+	private Integer ordersNumItems;
+	private Long itemsID;
+	private Double ordersCost;
 	private String ordersDate;
-	private long customerID;
+	private Long customerID;
 	
-	public Orders(long id, int ordersNumItems,long itemsID, double ordersCost, String ordersDate, long customerID) {
+	public Orders(Long id, Integer ordersNumItems,Long itemsID, Double ordersCost, String ordersDate, Long customerID) {
 		this.id = id;
 		this.ordersNumItems = ordersNumItems;
 		this.itemsID = itemsID;
@@ -19,7 +19,7 @@ public class Orders {
 		
 	}
 
-	public Orders(int ordersNumItems, long itemsID, double ordersCost, String ordersDate, long customerID) {
+	public Orders(Integer ordersNumItems, Long itemsID, Double ordersCost, String ordersDate, Long customerID) {
 		this.ordersNumItems = ordersNumItems;
 		this.itemsID = itemsID;
 		this.ordersCost = ordersCost;
@@ -27,19 +27,19 @@ public class Orders {
 		this.customerID = customerID;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public int getOrdersNumItems() {
+	public Integer getOrdersNumItems() {
 		return ordersNumItems;
 	}
 
-	public void setOrdersNumItems(int ordersNumItems) {
+	public void setOrdersNumItems(Integer ordersNumItems) {
 		this.ordersNumItems = ordersNumItems;
 	}
 	
@@ -47,7 +47,7 @@ public class Orders {
 		return ordersCost;
 	}
 	
-	public void setOrdersCost(double ordersCost) {
+	public void setOrdersCost(Double ordersCost) {
 		this.ordersCost = ordersCost;
 	}
 
@@ -59,19 +59,19 @@ public class Orders {
 		this.ordersDate = ordersDate;
 	}
 
-	public long getItemsID() {
+	public Long getItemsID() {
 		return itemsID;
 	}
 
-	public void setItemsID(long itemsID) {
+	public void setItemsID(Long itemsID) {
 		this.itemsID = itemsID;
 	}
 
-	public long getCustomerID() {
+	public Long getCustomerID() {
 		return customerID;
 	}
 
-	public void setCustomerID(long customerID) {
+	public void setCustomerID(Long customerID) {
 		this.customerID = customerID;
 	}
 
