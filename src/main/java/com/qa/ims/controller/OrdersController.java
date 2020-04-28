@@ -36,6 +36,7 @@ public class OrdersController implements CrudController<Orders>{
 	public Orders create() {
 		LOGGER.info("Please enter number of items in order");
 		Integer ordersNumItems = Integer.valueOf(getInput());
+		
 		LOGGER.info("Please enter the items ID for the order");
 		Long itemsID = Long.valueOf(getInput());
 		LOGGER.info("Please enter cost of order");
